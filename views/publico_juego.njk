@@ -1,0 +1,26 @@
+{% extends "publico_base.njk" %}
+
+{% block titulo %}Juego | Ficha{% endblock %}
+
+{% block contenido %}
+
+    <h1>Ficha del juego</h1>
+    <div class="card">
+        <img src="/public/uploads/{{ juego.imagen }}" width="30%"></img>
+        <p><strong>Nombre:</strong> {{ juego.nombre }}</p>
+        <p><strong>Descripción:</strong> {{ juego.descripcion }}</p>
+        <p><strong>Edad mínima:</strong> {{ juego.edad }}</p>
+        <p><strong>Número de jugadores:</strong> {{ juego.jugadores }}</p>
+        <p><strong>Tipo:</strong> {{ juego.tipo }}</p>
+        <p><strong>Precio:</strong> {{ juego.precio }}</p>        
+        <div class="card-footer">
+        <p><strong>Ediciones:</strong></p>
+        {% for edicion in juego.Ediciones %}
+            {{edicion.edicion}}
+        {%else%}
+            No hay ediciones de este juego.
+        {%endfor%}
+        </div>        
+    </div>
+
+{% endblock %}

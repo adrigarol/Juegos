@@ -1,0 +1,44 @@
+{% extends "publico_base.njk" %}
+{% block titulo %}Juegos | Nuevo{% endblock %}
+{% block contenido %}
+    <h1>Nuevo juego</h1>
+    {% if (juego) %}
+        <h1>Editar juego</h1>
+        <form action="/juegos/editar/{{ juego.id }}" method="post" enctype="multipart/form-data">
+        {% else %}
+        <form action="/juegos" method="post" enctype="multipart/form-data">
+    {% endif %}
+            <input type="hidden" name="_method" value="put"/>
+            <div class="form-group mb-3">
+                <label for="nombre">Nombre:</label>
+                <input type="text" class="form-control" name="nombre" placeholder="Nombre del juego..." value="{{ juego.nombre }}"/>
+            </div>
+            <div class="form-group mb-3">
+                <label for="descripcion">Descripción:</label>
+                <input type="text" class="form-control" name="descripcion" placeholder="Descripción del juego..." value="{{ juego.descripcion }}"/>
+            </div>
+            <div class="form-group mb-3">
+                <label for="fecha">Edad mínima:</label>
+                <input type="number" class="form-control" name="edad" placeholder="Edad mínima del juego..." value="{{ juego.edad }}"/>
+            </div>
+            <div class="form-group mb-3">
+                <label for="jugadores">Número de jugadores:</label>
+                <input type="number" class="form-control" name="jugadores" placeholder="Número de jugadores del juego..." value="{{ juego.jugadores }}"/>
+            </div>
+            <div class="form-group mb-3">
+                <label for="tipo">Tipo:</label>
+                <input type="text" class="form-control" name="tipo" placeholder="Tipo de juego..." value="{{ juego.tipo }}"/>
+            </div>
+            <div class="form-group mb-3">
+                <label for="precio">Precio:</label>
+                <input type="number" class="form-control" name="precio" placeholder="Precio del juego..." value="{{ juego.precio }}"/>
+            </div>
+            <div class="form-group mb-3">
+                <label for="imagen">Imagen:</label>
+                <input type="file" class="form-control" name="imagen" placeholder="Imagen del juego..." value="{{ juego.imagen }}"/>
+            </div>
+            <div class="form-group mb-3">
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            </div>
+        </form>
+{% endblock %}
